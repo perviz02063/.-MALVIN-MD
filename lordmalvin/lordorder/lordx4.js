@@ -1,26 +1,25 @@
 import config from '../../config.cjs';
 
-const autotypingCommand = async (m, Matrix) => {
+const autoblockCommand = async (m, Matrix) => {
   const botNumber = await Matrix.decodeJid(Matrix.user.id);
   const isCreator = [botNumber, config.OWNER_NUMBER + '@s.whatsapp.net'].includes(m.sender);
   const prefix = config.PREFIX;
 const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
 const text = m.body.slice(prefix.length + cmd.length).trim();
 
-  if (cmd === 'autotyping') {
-    if (!isCreator) return m.reply("*📛 THIS IS AN OWNER COMMAND*");
+  if (cmd === 'autoblock') {
+    if (!isCreator) return m.reply("*⚠️THIS IS AN OWNER COMMAND🥱*");
     let responseMessage;
 
     if (text === 'on') {
-      config.AUTO_TYPING = true;
-      responseMessage = "Auto-Typing has been enabled.";
+      config.AUTO_BLOCK = true;
+      responseMessage = "Auto-Block has been activated📵.";
     } else if (text === 'off') {
-      config.AUTO_TYPING = false;
-      responseMessage = "Auto-Typing has been disabled.";
+      config.AUTO_BLOCK = false;
+      responseMessage = "Auto-Block has been deactivated📳.";
     } else {
-      responseMessage = "Usage:\n- `autotyping on`: Enable Auto-Typing\n- `autotyping off`: Disable Auto-Typing";
+      responseMessage = "Usage:\n- `autoblock on`: Activate Auto-Block\n- `autoblock off`: Deactivate Auto-Block";
     }
-
     try {
       await Matrix.sendMessage(m.from, { text: responseMessage }, { quoted: m });
     } catch (error) {
@@ -30,4 +29,4 @@ const text = m.body.slice(prefix.length + cmd.length).trim();
   }
 };
 
-export default autotypingCommand;
+export default autoblockCommand;

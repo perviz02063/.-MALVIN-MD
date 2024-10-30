@@ -1,17 +1,16 @@
 import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
 const { generateWAMessageFromContent, proto } = pkg;
 import axios from 'axios';
-import config from '../../config.cjs';
 
 const searchRepo = async (m, Matrix) => {
-  const prefix = config.PREFIX;
-const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
-const text = m.body.slice(prefix.length + cmd.length).trim();
+  const prefixMatch = m.body.match(/^[\\/!#.]/);
+  const prefix = prefixMatch ? prefixMatch[0] : '/';
+  const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
 
   const validCommands = ['repo', 'sc', 'script'];
 
   if (validCommands.includes(cmd)) {
-    const repoUrl = `https://api.github.com/repos/kingmalvn/LORD-MD`;
+    const repoUrl = `https://api.github.com/repos/kingmalvn/MALVIN-MD`;
     
     await handleRepoCommand(m, Matrix, repoUrl);
   }
@@ -32,20 +31,18 @@ const handleRepoCommand = async (m, Matrix, repoUrl) => {
       owner,
     } = repoData;
 
-    const messageText = `╭══❐ 𝙼𝙰𝙻𝚅𝙸𝙽 𝙼𝙳 𝚁𝙴𝙿𝙾 ❐
-┃╭──────────────
-┃│ 🤖 ʙᴏᴛ ɴᴀᴍᴇ: ${name}
-┃│ 📌 ᴠᴇʀꜱɪᴏɴ : 8.1.3
-┃│ ✨ ꜱᴛᴀʀꜱ:  ${stargazers_count}
-┃│ 🧧 ꜰᴏʀᴋꜱ: ${forks_count}
-┃│ 📅 ʀᴇʟᴇᴀꜱᴇ ᴅᴀᴛᴇ: ${new Date(created_at).toLocaleDateString()}
-┃│ 🕐 ᴜᴩᴅᴀᴛᴇ ᴏɴ:* ${new Date(updated_at).toLocaleDateString()}
-┃│ 👱 ᴏᴡɴᴇʀ : *𝙻𝙾𝚁𝙳 мαℓνιи*
-┃│ 💞 ᴛʜᴇᴍᴇ: 𝚁𝙰𝚅𝙴𝙽𝚂
-┃│ 
-┃│  𝙻𝙾𝚁𝙳 𝙼𝙳 𝙸𝚂 𝙾𝙽𝙻𝙸𝙽𝙴
-┃╰───────────────
-╰═════════════════⊷`;
+    const messageText = `╭──────────────
+│ 😎 ʙᴏᴛ ɴᴀᴍᴇ: ${name}
+│ 📌 ᴠᴇʀꜱɪᴏɴ : 7.1.3
+│ ✨ ꜱᴛᴀʀꜱ:  ${stargazers_count}
+│ 🧧 ꜰᴏʀᴋꜱ: ${forks_count}
+│ 📅 ʀᴇʟᴇᴀꜱᴇ ᴅᴀᴛᴇ: ${new Date(created_at).toLocaleDateString()}
+│ 🕐 ᴜᴩᴅᴀᴛᴇ ᴏɴ:* ${new Date(updated_at).toLocaleDateString()}
+│ 👱 ᴏᴡɴᴇʀ : *𝙻𝙾𝚁𝙳 мαℓνιи*
+│ 
+╰───────────────
+
+    `;
 
     const repoMessage = generateWAMessageFromContent(m.from, {
       viewOnceMessage: {
@@ -59,12 +56,12 @@ const handleRepoCommand = async (m, Matrix, repoUrl) => {
               text: messageText,
             }),
             footer: proto.Message.InteractiveMessage.Footer.create({
-              text: '© 𝙻𝙾𝚁𝙳 мαℓνιи',
+              text: '*© Lord Malvin*',
             }),
             header: proto.Message.InteractiveMessage.Header.create({
               ...(await prepareWAMessageMedia({
                 image: {
-                  url: '',
+                  url: 'https://g.top4top.io/p_3218pggm51.jpg',
                 },
               }, { upload: Matrix.waUploadToServer })),
               title: '',
@@ -75,23 +72,23 @@ const handleRepoCommand = async (m, Matrix, repoUrl) => {
             nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
               buttons: [
                 {
-                  name: 'quick_reply',
+                  name: 'cta_url',
                   buttonParamsJson: JSON.stringify({
-                    display_text: 'Contact Owner',
-                    id: `${prefix}owner`,
+                    display_text: 'ꜱᴜʙꜱᴄʀɪʙᴇ ᴏɴ Yᴏᴜᴛᴜʙᴇ',
+                    url: 'https://youtube.com/@malvintech2',
                   }),
                 },
                 {
                   name: 'cta_url',
                   buttonParamsJson: JSON.stringify({
-                    display_text: 'Click Here To Fork',
-                    url: repoUrl.replace('api.', '').replace('repos/', '/forks/'),
+                    display_text: 'ᴍᴀʟᴠɪɴ ʙᴏᴛ ʀᴇᴩᴏ',
+                    url: 'https://github.com/kingmalvn/MALVIN-MD/',
                   }),
                 },
                 {
                   name: 'cta_url',
                   buttonParamsJson: JSON.stringify({
-                    display_text: 'Join Our Cchannel',
+                    display_text: 'ᴡʜᴀᴛꜱᴀᴩᴩ ᴄʜᴀɴɴᴇʟ',
                     url: 'https://whatsapp.com/channel/0029Vac8SosLY6d7CAFndv3Z',
                   }),
                 },

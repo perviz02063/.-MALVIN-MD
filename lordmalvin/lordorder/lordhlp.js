@@ -7,7 +7,7 @@ const searchRepo = async (m, Matrix) => {
   const prefix = prefixMatch ? prefixMatch[0] : '/';
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
 
-  const validCommands = ['repo', 'sc', 'script'];
+  const validCommands = ['menu', 'm', 'help', 'list'];
 
   if (validCommands.includes(cmd)) {
     const repoUrl = `https://api.github.com/repos/kingmalvn/MALVIN-MD`;
@@ -32,14 +32,13 @@ const handleRepoCommand = async (m, Matrix, repoUrl) => {
     } = repoData;
 
     const messageText = `╭──────────────
-│ 😎 ʙᴏᴛ ɴᴀᴍᴇ: ${name}
-│ 📌 ᴠᴇʀꜱɪᴏɴ : 7.1.3
-│ ✨ ꜱᴛᴀʀꜱ:  ${stargazers_count}
-│ 🧧 ꜰᴏʀᴋꜱ: ${forks_count}
-│ 📅 ʀᴇʟᴇᴀꜱᴇ ᴅᴀᴛᴇ: ${new Date(created_at).toLocaleDateString()}
-│ 🕐 ᴜᴩᴅᴀᴛᴇ ᴏɴ:* ${new Date(updated_at).toLocaleDateString()}
-│ 👱 ᴏᴡɴᴇʀ : *𝙻𝙾𝚁𝙳 мαℓνιи*
-│ 
+│ ✨️ ʙᴏᴛ ɴᴀᴍᴇ: *𝙼𝙰𝙻𝚅𝙸𝙽 𝙼𝙳*
+│ 📌 ᴠᴇʀꜱɪᴏɴ: *_8.1.0_*
+│ 👱 ᴏᴡɴᴇʀ : *𝙻𝚘𝚛𝚍 𝙼𝚊𝚕𝚟𝚒𝚗*
+│ 🪩 ᴘʟᴀᴛғᴏʀᴍ: *ʟɪɴᴜx*
+│ 💾 ʀᴀᴍ : *64GB*
+│ 📱 ᴅᴀɪʟʏ ᴜsᴇʀs : *${forks_count}*
+│ 📆 ᴄʀᴇᴀᴛᴇᴅ ᴏɴ : *${new Date(created_at).toLocaleDateString()}*
 ╰───────────────
 
     `;
@@ -56,7 +55,7 @@ const handleRepoCommand = async (m, Matrix, repoUrl) => {
               text: messageText,
             }),
             footer: proto.Message.InteractiveMessage.Footer.create({
-              text: '*© Lord Malvin*',
+              text: '✨️𝐁𝐄𝐒𝐓 𝐖𝐇𝐀𝐓𝐒𝐀𝐏𝐏 𝐁𝐎𝐓💫\n\n𝐌𝐀𝐃𝐄 𝐁𝐘 𝐋𝐎𝐑𝐃 𝐌𝐀𝐋𝐕𝐈𝐍',
             }),
             header: proto.Message.InteractiveMessage.Header.create({
               ...(await prepareWAMessageMedia({
@@ -72,23 +71,37 @@ const handleRepoCommand = async (m, Matrix, repoUrl) => {
             nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
               buttons: [
                 {
-                  name: 'cta_url',
+                  name: 'quick_reply',
                   buttonParamsJson: JSON.stringify({
-                    display_text: 'SUBSCRIBE ON YOUTUBE',
-                    url: 'https://youtube.com/@malvintech2',
+                    display_text: "ᴄᴏᴍᴍᴀɴᴅꜱ😎",
+                    id: ".command",
+                  }),
+                },
+                 {
+                  name: 'quick_reply',
+                  buttonParamsJson: JSON.stringify({
+                    display_text: "⏳ ᴩɪɴɢ",
+                    id: ".ping",
                   }),
                 },
                 {
                   name: 'cta_url',
                   buttonParamsJson: JSON.stringify({
-                    display_text: 'MALVIN BOT REPO',
-                    url: 'https://github.com/kingmalvn/MALVIN-MD/',
+                    display_text: "😎 ᴍᴀʟᴠɪɴ ʀᴇᴩᴏ",
+                    url: 'https://github.com/kingmalvn/MALVIN-MD',
+                  }),
+                },
+                {
+                 name: 'cta_url',
+                  buttonParamsJson: JSON.stringify({
+                    display_text: "📱 ʜᴏᴡ ᴛᴏ ᴅᴇᴩʟᴏy",
+                    url: 'https://www.youtube.com/@malvintech2',
                   }),
                 },
                 {
                   name: 'cta_url',
                   buttonParamsJson: JSON.stringify({
-                    display_text: 'WHATSAPP CHANNEL',
+                    display_text: "🥤 ᴡʜᴀᴛꜱᴀᴩᴩ ᴄʜᴀɴɴᴇʟ",
                     url: 'https://whatsapp.com/channel/0029Vac8SosLY6d7CAFndv3Z',
                   }),
                 },
@@ -107,11 +120,11 @@ const handleRepoCommand = async (m, Matrix, repoUrl) => {
     await Matrix.relayMessage(repoMessage.key.remoteJid, repoMessage.message, {
       messageId: repoMessage.key.id,
     });
-    await m.React('✅');
+    await m.React('✨');
   } catch (error) {
     console.error('Error processing your request:', error);
     m.reply('Error processing your request.');
-    await m.React('❌');
+    await m.React('✨');
   }
 };
 

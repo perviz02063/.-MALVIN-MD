@@ -19,12 +19,12 @@ const text = m.body.slice(prefix.length + cmd.length).trim();
 
     if (text === 'on') {
       config.WELCOME = true;
-      responseMessage = "WELCOME & LEFT message has been enabled.";
+      responseMessage = "WELCOME & LEFT message has been activated.";
     } else if (text === 'off') {
       config.WELCOME = false;
-      responseMessage = "WELCOME & LEFT message has been disabled.";
+      responseMessage = "WELCOME & LEFT message has been deactivated.";
     } else {
-      responseMessage = "Usage:\n- `WELCOME on`: Enable WELCOME & LEFT message\n- `WELCOME off`: Disable WELCOME & LEFT message";
+      responseMessage = "Usage:\n- `WELCOME on`: Activated WELCOME & LEFT message🔛\n- `WELCOME off`: Deactivated WELCOME & LEFT message🚫";
     }
 
     try {

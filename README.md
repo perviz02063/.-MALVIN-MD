@@ -5,7 +5,7 @@
 
 
 
- **<a href="https://github.com/kingmalvn"><img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=30&duration=4000&pause=1000&color=FFFB00&center=true&width=435&lines=%F0%9F%A7%B8+Hi+Am+𝙼𝙰𝙻𝚅𝙸𝙽+𝙼𝙳+%E2%9C%A8%EF%B8%8F" alt="Typing SVG" /></a>**
+ **<a href="https://github.com/kingmalvn"><img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=30&duration=4000&pause=1000&color=F22B00&center=true&width=435&lines=%F0%9F%A7%B8+Hi+Am+𝙼𝙰𝙻𝚅𝙸𝙽+𝙼𝙳+%E2%9C%A8%EF%B8%8F" alt="Typing SVG" /></a>**
 
  </a><a><img src='https://g.top4top.io/p_3218pggm51.jpg'/></a>
 <p align="center">
@@ -61,12 +61,22 @@
   <a href="https://youtube.com/@malvintech2"><img src="https://img.shields.io/badge/CodeSpace-green?colorA=%23ff000&colorB=%23017e40&style=for-the-badge&logo=git&logoColor=white"></a>
 
 ***
+#### SETUP
 
-♾️  GET BOT SESSION ON 🫡👇👇
+1. Fork the repo
+    <br>
+    <br>
+<a href='https://github.com/kingmalvn/MALVIN-MD/fork' target="_blank"><img alt='Fork repo' src='https://img.shields.io/badge/Fork Repo-100000?style=for-the-badge&logo=github&logoColor=white&labelColor=black&color=black'/></a>
 
-[![Find On Whatsapp ](https://img.shields.io/badge/🫅PAIR_SESSION_Click_Here-blue.svg)](https://ibrahim-adam-c5b1ef481932.herokuapp.com/)
+
+3. Get Session ID
+    <br>
+    <br>
+<a href='https://ibrahim-adam-c5b1ef481932.herokuapp.com/' target="_blank"><img alt='SESSION ID' src='https://img.shields.io/badge/Session_id-100000?style=for-the-badge&logo=git&logoColor=white&labelColor=red&color=blue'/></a>
 
 
+<!-- RAINBOW LINE BOT -->
+<img src="https://github.com/AnderMendoza/AnderMendoza/raw/main/assets/line-neon.gif" width="100%">
 
 
 ***

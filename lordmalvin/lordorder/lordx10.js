@@ -1,24 +1,24 @@
 import config from '../../config.cjs';
 
-const alwaysonlineCommand = async (m, Matrix) => {
+const autotypingCommand = async (m, Matrix) => {
   const botNumber = await Matrix.decodeJid(Matrix.user.id);
   const isCreator = [botNumber, config.OWNER_NUMBER + '@s.whatsapp.net'].includes(m.sender);
   const prefix = config.PREFIX;
 const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
 const text = m.body.slice(prefix.length + cmd.length).trim();
 
-  if (cmd === 'alwaysonline') {
-    if (!isCreator) return m.reply("*Only adamin*");
+  if (cmd === 'autotyping') {
+    if (!isCreator) return m.reply("*📛 THIS IS AN OWNER COMMAND🥱*");
     let responseMessage;
 
     if (text === 'on') {
-      config.ALWAYS_ONLINE = true;
-      responseMessage = "Always Online has been enabled.";
+      config.AUTO_TYPING = true;
+      responseMessage = "Auto-Typing has been activated.";
     } else if (text === 'off') {
-      config.ALWAYS_ONLINE = false;
-      responseMessage = "Always Online has been disabled.";
+      config.AUTO_TYPING = false;
+      responseMessage = "Auto-Typing has been deactivated.";
     } else {
-      responseMessage = "Usage:\n- `alwaysonline on`: Enable Always Online\n- `alwaysonline off`: Disable Always Online";
+      responseMessage = "Usage:\n- `autotyping on`: Activate Auto-Typing\n- `autotyping off`: Deactivate Auto-Typing";
     }
 
     try {
@@ -30,4 +30,4 @@ const text = m.body.slice(prefix.length + cmd.length).trim();
   }
 };
 
-export default alwaysonlineCommand;
+export default autotypingCommand;

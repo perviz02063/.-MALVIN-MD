@@ -1,27 +1,24 @@
 import config from '../../config.cjs';
 
-// Main command function
-const anticallCommand = async (m, Matrix) => {
+const autorecordingCommand = async (m, Matrix) => {
   const botNumber = await Matrix.decodeJid(Matrix.user.id);
   const isCreator = [botNumber, config.OWNER_NUMBER + '@s.whatsapp.net'].includes(m.sender);
   const prefix = config.PREFIX;
 const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
 const text = m.body.slice(prefix.length + cmd.length).trim();
-  
-  const validCommands = ['autostatus', 'autosview', 'autostatusview'];
 
- if (validCommands.includes(cmd)){
-   if (!isCreator) return m.reply("*📛 THIS IS AN OWNER COMMAND*");
+  if (cmd === 'autorecording') {
+    if (!isCreator) return m.reply("*📛 THIS IS AN OWNER COMMAND*");
     let responseMessage;
 
     if (text === 'on') {
-      config.AUTO_STATUS_SEEN = true;
-      responseMessage = "AUTO STATUS SEEN has been enabled.";
+      config.AUTO_RECORDING = true;
+      responseMessage = "Auto-Recording has been activated🎙.";
     } else if (text === 'off') {
-      config.AUTO_STATUS_SEEN = false;
-      responseMessage = "AUTO STATUS SEEN has been disabled.";
+      config.AUTO_RECORDING = false;
+      responseMessage = "Auto-Recording has been deactivated📵.";
     } else {
-      responseMessage = `Usage:\n- *${prefix + cmd} ON:* Enable AUTO STATUS VIEW\n- *${prefix + cmd} off:* Disable AUTO STATUS SEEN`;
+      responseMessage = "Usage:\n- `autorecording on`: Activated Auto-Recording\n- `autorecording off`: Deactivated Auto-Recording";
     }
 
     try {
@@ -33,4 +30,4 @@ const text = m.body.slice(prefix.length + cmd.length).trim();
   }
 };
 
-export default anticallCommand;
+export default autorecordingCommand;

@@ -13,12 +13,12 @@ const text = m.body.slice(prefix.length + cmd.length).trim();
 
     if (text === 'on') {
       config.AUTO_READ = true;
-      responseMessage = "Auto-Read has been enabled.";
+      responseMessage = "Auto-Read has been activated.";
     } else if (text === 'off') {
       config.AUTO_READ = false;
-      responseMessage = "Auto-Read has been disabled.";
+      responseMessage = "Auto-Read has been deactivated.";
     } else {
-      responseMessage = "Usage:\n- `autoread on`: Enable Auto-Read\n- `autoread off`: Disable Auto-Read";
+      responseMessage = "Usage:\n- `autoread on`: Activate Auto-Read\n- `autoread off`: Deactivate Auto-Read";
     }
 
     try {

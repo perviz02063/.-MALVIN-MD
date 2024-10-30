@@ -1,24 +1,24 @@
 import config from '../../config.cjs';
 
-const autorecordingCommand = async (m, Matrix) => {
+const alwaysonlineCommand = async (m, Matrix) => {
   const botNumber = await Matrix.decodeJid(Matrix.user.id);
   const isCreator = [botNumber, config.OWNER_NUMBER + '@s.whatsapp.net'].includes(m.sender);
   const prefix = config.PREFIX;
 const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
 const text = m.body.slice(prefix.length + cmd.length).trim();
 
-  if (cmd === 'autorecording') {
-    if (!isCreator) return m.reply("*📛 THIS IS AN OWNER COMMAND*");
+  if (cmd === 'alwaysonline') {
+    if (!isCreator) return m.reply("*Only adamin*");
     let responseMessage;
 
     if (text === 'on') {
-      config.AUTO_RECORDING = true;
-      responseMessage = "Auto-Recording has been enabled.";
+      config.ALWAYS_ONLINE = true;
+      responseMessage = "Always Online has been activated😎.";
     } else if (text === 'off') {
-      config.AUTO_RECORDING = false;
-      responseMessage = "Auto-Recording has been disabled.";
+      config.ALWAYS_ONLINE = false;
+      responseMessage = "Always Online has been deactivated🥱.";
     } else {
-      responseMessage = "Usage:\n- `autorecording on`: Enable Auto-Recording\n- `autorecording off`: Disable Auto-Recording";
+      responseMessage = "Usage:\n- `alwaysonline on`: Activate Always Online\n- `alwaysonline off`: Deactivate Always Online";
     }
 
     try {
@@ -30,4 +30,4 @@ const text = m.body.slice(prefix.length + cmd.length).trim();
   }
 };
 
-export default autorecordingCommand;
+export default alwaysonlineCommand;

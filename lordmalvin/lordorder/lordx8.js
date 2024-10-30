@@ -1,25 +1,29 @@
 import config from '../../config.cjs';
 
-const autoblockCommand = async (m, Matrix) => {
+// Main command function
+const anticallCommand = async (m, Matrix) => {
   const botNumber = await Matrix.decodeJid(Matrix.user.id);
   const isCreator = [botNumber, config.OWNER_NUMBER + '@s.whatsapp.net'].includes(m.sender);
   const prefix = config.PREFIX;
 const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
 const text = m.body.slice(prefix.length + cmd.length).trim();
+  
+  const validCommands = ['autostatus', 'autosview', 'autostatusview'];
 
-  if (cmd === 'autoblock') {
-    if (!isCreator) return m.reply("*THIS IS AN OWNER COMMAND*");
+ if (validCommands.includes(cmd)){
+   if (!isCreator) return m.reply("*📛 THIS IS AN OWNER COMMAND😌*");
     let responseMessage;
 
     if (text === 'on') {
-      config.AUTO_BLOCK = true;
-      responseMessage = "Auto-Block has been enabled.";
+      config.AUTO_STATUS_SEEN = true;
+      responseMessage = "AUTO STATUS SEEN has been activated.";
     } else if (text === 'off') {
-      config.AUTO_BLOCK = false;
-      responseMessage = "Auto-Block has been disabled.";
+      config.AUTO_STATUS_SEEN = false;
+      responseMessage = "AUTO STATUS SEEN has been deactivated.";
     } else {
-      responseMessage = "Usage:\n- `autoblock on`: Enable Auto-Block\n- `autoblock off`: Disable Auto-Block";
+      responseMessage = `Usage:\n- *${prefix + cmd} ON:* Activate AUTO STATUS VIEW\n- *${prefix + cmd} off:* Deactivate AUTO STATUS SEEN`;
     }
+
     try {
       await Matrix.sendMessage(m.from, { text: responseMessage }, { quoted: m });
     } catch (error) {
@@ -29,4 +33,4 @@ const text = m.body.slice(prefix.length + cmd.length).trim();
   }
 };
 
-export default autoblockCommand;
+export default anticallCommand;

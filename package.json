@@ -1,7 +1,7 @@
 
 
 {
-  "name": "MALVIN-MD",
+  "name": "𝙼𝙰𝙻𝚅𝙸𝙽 𝙼𝙳",
   "version": "10.8.1",
   "description": "𝙱𝚎𝚜𝚝 𝚆𝚑𝚊𝚝𝚜𝙰𝚙𝚙 𝙱𝚘𝚝 𝙳𝚎𝚟𝚎𝚕𝚘𝚙𝚎𝚍 𝙱𝚢 𝙼𝚊𝚕𝚟𝚒𝚗 𝚃𝚎𝚌𝚑 𝙲𝚘𝚗𝚝𝚊𝚌𝚝 𝚖𝚎 263780166288, 𝚃𝚑𝚊𝚗𝚔 𝚢𝚘𝚞 𝚏𝚘𝚛 𝚌𝚑𝚘𝚘sing 𝙼𝙰𝙻𝚅𝙸𝙽 𝙼𝙳.",
   "main": "index.js",
@@ -12,7 +12,7 @@
     "restart": "pm2 restart MALVIN-MD"
   },
   "keywords": ["malvin-md", "whatsapp-bot", "whatsapp md bot"],
-  "author": "lord Malvin",
+  "author": "Lord Malvin",
   "license": "ISC",
   "dependencies": {
     "@ffmpeg-installer/ffmpeg": "^1.1.0",
